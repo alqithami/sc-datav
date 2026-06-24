@@ -9,9 +9,9 @@ import scOutlineData from "@/assets/sc_outline.json";
 
 export function OutLineAnimated() {
   const controls = useControls({
-    background: { label: "侧边颜色", value: "#0e171a" },
+    background: { label: "Side color", value: "#0e171a" },
     background1: {
-      label: "侧边扫光颜色",
+      label: "Side sweep color",
       value: "#90aba7",
       transient: false,
       onChange: (v) => {
