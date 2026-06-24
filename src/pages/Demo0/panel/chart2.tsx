@@ -10,7 +10,7 @@ import {
 import type { EChartsType } from "echarts/core";
 
 const colors = ["#ACA891", "#6E918C"];
-const dataType = { inCount: "进口", outCount: "出口" };
+const dataType = { imports: "Imports", exports: "Exports" };
 
 let data: [string[], number[], number[]] = [[], [], []];
 
@@ -28,9 +28,7 @@ export default function Chart2() {
     if (chartRef.current) {
       chartRef.current?.dispatchAction({
         type: "dataZoom",
-        // 开始位置的数值
         startValue: xLength.current,
-        // 结束位置的数值
         endValue: xLength.current + 8,
       });
       xLength.current = (xLength.current + 1) % (data[0].length - 8);
@@ -119,7 +117,7 @@ export default function Chart2() {
         },
         series: [
           {
-            name: "进口",
+            name: "Imports",
             type: "line",
             symbol: "none",
             smooth: true,
@@ -133,14 +131,14 @@ export default function Chart2() {
               data: [
                 {
                   type: "max",
-                  name: "最大值",
+                  name: "Max",
                 },
               ],
             },
             data: data[1],
           },
           {
-            name: "出口",
+            name: "Exports",
             type: "line",
             symbol: "none",
             smooth: true,
@@ -154,7 +152,7 @@ export default function Chart2() {
               data: [
                 {
                   type: "max",
-                  name: "最大值",
+                  name: "Max",
                 },
               ],
             },
