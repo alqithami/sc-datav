@@ -4,8 +4,10 @@ import Chart from "@/components/chart";
 import { LineChart } from "echarts/charts";
 import {
   DataZoomComponent,
+  GridComponent,
   LegendComponent,
   MarkPointComponent,
+  TooltipComponent,
 } from "echarts/components";
 import type { EChartsType } from "echarts/core";
 
@@ -38,7 +40,14 @@ export default function Chart2() {
   return (
     <Chart
       ref={chartRef}
-      use={[LineChart, LegendComponent, DataZoomComponent, MarkPointComponent]}
+      use={[
+        LineChart,
+        TooltipComponent,
+        GridComponent,
+        LegendComponent,
+        DataZoomComponent,
+        MarkPointComponent,
+      ]}
       option={{
         tooltip: {
           trigger: "axis",
