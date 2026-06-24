@@ -48,13 +48,13 @@ export default function Chart1() {
         title: [
           {
             left: "center",
-            text: "全省",
+            text: "Provincewide",
             textStyle: { color: "rgba(255, 255, 255, 0.6)" },
           },
           {
             top: "50%",
             left: "center",
-            text: "成都市",
+            text: "Chengdu",
             textStyle: { color: "rgba(255, 255, 255, 0.6)" },
           },
         ],
