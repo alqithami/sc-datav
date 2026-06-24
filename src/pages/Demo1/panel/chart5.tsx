@@ -15,10 +15,10 @@ type PieOption = ComposeOption<
 const color = ["#fbdf88", "#ffa800", "#ff5b00", "#ff3000"];
 
 const trafficWay = [
-  { name: "第一季度", value: 20 },
-  { name: "第二季度", value: 10 },
-  { name: "第三季度", value: 30 },
-  { name: "第四季度", value: 40 },
+  { name: "Q1", value: 20 },
+  { name: "Q2", value: 10 },
+  { name: "Q3", value: 30 },
+  { name: "Q4", value: 40 },
 ];
 
 const data = trafficWay.reduce<PieSeriesOption["data"]>((pre, cur, i) => {
@@ -58,7 +58,7 @@ export default function Chart5() {
         legend: {
           icon: "circle",
           orient: "vertical",
-          data: ["第一季度", "第二季度", "第三季度", "第四季度"],
+          data: ["Q1", "Q2", "Q3", "Q4"],
           top: "middle",
           right: "10%",
           textStyle: {
