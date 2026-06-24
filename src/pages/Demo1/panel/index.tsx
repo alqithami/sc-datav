@@ -27,7 +27,6 @@ const Card = styled.div`
   position: relative;
   background: rgba(255, 245, 232, 0.65);
   border: 1px solid rgba(255, 145, 0, 0.3);
-  position: relative;
   padding: 15px;
   backdrop-filter: blur(4px);
   border-radius: 4px;
@@ -149,37 +148,37 @@ export default function Content() {
       <GridWrapper>
         <Card ref={leftBox.ref} style={{ gridArea: "1 / 1 / 3 / 2" }}>
           <CardTitle>
-            2025年规模指标分析<span>INDICATOR ANALYSIS</span>
+            2025 Scale Indicator Analysis<span>INDICATOR ANALYSIS</span>
           </CardTitle>
           <Chart1 />
         </Card>
         <Card ref={leftBox1.ref} style={{ gridArea: "3 / 1 / 5 / 2" }}>
           <CardTitle>
-            企业税收分析<span>TAX ANALYSIS</span>
+            Enterprise Tax Analysis<span>TAX ANALYSIS</span>
           </CardTitle>
           <Chart2 />
         </Card>
         <Card ref={leftBox2.ref} style={{ gridArea: "5 / 1 / 7 / 2" }}>
           <CardTitle>
-            行政处罚信息<span>PENALTY INFORMATION</span>
+            Administrative Penalty Records<span>PENALTY INFORMATION</span>
           </CardTitle>
           <Chart3 />
         </Card>
         <Card ref={rightBox.ref} style={{ gridArea: "1 / 4 / 3 / 5" }}>
           <CardTitle>
-            企业收益总数统计<span>REVENUE STATISTICS</span>
+            Total Enterprise Revenue Statistics<span>REVENUE STATISTICS</span>
           </CardTitle>
           <Chart4 />
         </Card>
         <Card ref={rightBox1.ref} style={{ gridArea: "3 / 4 / 5 / 5" }}>
           <CardTitle>
-            企业能耗分析<span>ENERGY CONSUMPTION ANALYSIS</span>
+            Enterprise Energy Consumption Analysis<span>ENERGY CONSUMPTION ANALYSIS</span>
           </CardTitle>
           <Chart5 />
         </Card>
         <Card ref={rightBox2.ref} style={{ gridArea: "5 / 4 / 7 / 5" }}>
           <CardTitle>
-            企业税收分析<span>TAX ANALYSIS</span>
+            Enterprise Tax Analysis<span>TAX ANALYSIS</span>
           </CardTitle>
           <Chart6 />
         </Card>
