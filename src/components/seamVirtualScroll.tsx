@@ -104,7 +104,7 @@ const ScrollItem = styled.span`
   }
 `;
 
-const Empty = styled.div.attrs({ children: "暂无数据" })`
+const Empty = styled.div.attrs({ children: "No data" })`
   width: 100%;
   height: 100%;
   display: flex;
@@ -229,11 +229,6 @@ const Index: FC<SeamVirtualScroll<Record<string, React.ReactNode>>> = (
     setActiveIndex((n) => (n + 1) % data.length);
   };
 
-  /**
-   * 鼠标移动，移除方法
-   * @param flag
-   * @returns
-   */
   const hoverHandler = (flag: boolean) => setIsScroll(flag);
 
   return (
