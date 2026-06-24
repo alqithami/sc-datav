@@ -13,21 +13,21 @@ export default function Charts3() {
         body: { color: "#000000" },
       }}
       column={[
-        { title: "省份", dataIndex: "value1", noScroll: true },
+        { title: "City", dataIndex: "value1", noScroll: true },
         {
-          title: "专利编号",
+          title: "Patent ID",
           dataIndex: "value2",
           align: "center",
           noScroll: true,
         },
         {
-          title: "处罚金额",
+          title: "Penalty Amount",
           dataIndex: "value3",
           align: "right",
           noScroll: true,
         },
         {
-          title: "同比百分比",
+          title: "YoY %",
           dataIndex: "value4",
           align: "right",
           noScroll: true,
@@ -39,7 +39,7 @@ export default function Charts3() {
         return {
           value1: keys[k],
           value2: `ZL${Math.round(Math.random() * 10000000)}`,
-          value3: (Math.random() * 1000).toLocaleString("zh-CN", {
+          value3: (Math.random() * 1000).toLocaleString("en-US", {
             maximumFractionDigits: 2,
           }),
           value4: (
@@ -49,7 +49,7 @@ export default function Charts3() {
                   value4 > 90 ? "#fbdf88" : value4 > 60 ? "#ffa800" : "#ea580c",
               }}>
               {value4
-                .toLocaleString("zh-CN", {
+                .toLocaleString("en-US", {
                   maximumFractionDigits: 2,
                 })
                 .concat("%")}
