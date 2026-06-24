@@ -12,15 +12,15 @@ import { type GeoProjection } from "d3-geo";
 import scOutlineData from "@/assets/sc_outline.json";
 
 export default function FlyLine({ projection }: { projection: GeoProjection }) {
-  const index = useRef(0); //取点索引位置
-  const num = useRef(50); //从曲线上获取点数量
+  const index = useRef(0);
+  const num = useRef(50);
   const geometry = useRef(new BufferGeometry());
   const curve2 = useRef<CatmullRomCurve3>(null);
   const points = useRef<Vector3[]>([]);
   const controls = useControls({
-    lineColor: { label: "边缘流光颜色", value: "#ffffff" },
+    lineColor: { label: "Edge trail color", value: "#ffffff" },
     animation: {
-      label: "边缘流光动画",
+      label: "Edge trail animation",
       value: true,
     },
   });
@@ -38,22 +38,21 @@ export default function FlyLine({ projection }: { projection: GeoProjection }) {
     });
 
     points.current = new CatmullRomCurve3(v3Arr).getSpacedPoints(800);
-    index.current = Math.floor((points.current.length - 35) * Math.random()); //取点索引位置随机
+    index.current = Math.floor((points.current.length - 35) * Math.random());
     const points2 = points.current.slice(
       index.current,
       index.current + num.current
-    ); //从曲线上获取一段
+    );
 
     curve2.current = new CatmullRomCurve3(points2);
-    const newPoints2 = curve2.current.getSpacedPoints(200); //获取更多的点数
+    const newPoints2 = curve2.current.getSpacedPoints(200);
 
     geometry.current.setFromPoints(newPoints2);
 
-    // 每个顶点对应一个百分比数据attributes.percent 用于控制点的渲染大小
     const half = Math.floor(newPoints2.length / 2);
     const percentArr = newPoints2.map((_, i) =>
       i < half ? i / half : 1 - (i - half) / half
-    ); //attributes.percent的数据
+    );
 
     geometry.current.attributes.percent = new Float32BufferAttribute(
       percentArr,
@@ -74,7 +73,6 @@ export default function FlyLine({ projection }: { projection: GeoProjection }) {
 
     let segment;
 
-    // ✅ 如果 end 超出数组长度，则拼接两段
     if (end <= total) {
       segment = pts.slice(start, end);
     } else {
@@ -82,7 +80,6 @@ export default function FlyLine({ projection }: { projection: GeoProjection }) {
       segment = pts.slice(start).concat(pts.slice(0, overflow));
     }
 
-    // 更新曲线和几何体
     curve2.current.points = segment;
     const newPoints2 = curve2.current.getSpacedPoints(200);
     geometry.current.setFromPoints(newPoints2);
@@ -95,15 +92,12 @@ export default function FlyLine({ projection }: { projection: GeoProjection }) {
           transparent
           color={controls.lineColor}
           size={0.2}
-          // blending={THREE.AdditiveBlending}
           onBeforeCompile={(shader) => {
-            // 顶点着色器中声明一个attribute变量:百分比
             shader.vertexShader = shader.vertexShader
               .replace(
                 "void main() {",
                 "attribute float percent;\nvoid main() {"
               )
-              // 调整点渲染大小计算方式
               .replace(
                 "gl_PointSize = size;",
                 "gl_PointSize = percent * size;"
