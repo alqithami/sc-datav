@@ -26,7 +26,7 @@ type LineOption = ComposeOption<
 >;
 
 const colors = ["#3061DB", "#BDCFFF"];
-const dataType = { type1: "今年", type2: "去年" };
+const dataType = { type1: "Current Year", type2: "Previous Year" };
 
 let data: [string[], number[], number[]] = [[], [], []];
 
@@ -44,9 +44,7 @@ export default function Chart2() {
     if (chartRef.current) {
       chartRef.current?.dispatchAction({
         type: "dataZoom",
-        // 开始位置的数值
         startValue: xLength.current,
-        // 结束位置的数值
         endValue: xLength.current + 8,
       });
       xLength.current = (xLength.current + 1) % (data[0].length - 8);
@@ -143,7 +141,7 @@ export default function Chart2() {
         },
         series: [
           {
-            name: "今年",
+            name: "Current Year",
             type: "line",
             symbol: "none",
             smooth: true,
@@ -174,14 +172,14 @@ export default function Chart2() {
               data: [
                 {
                   type: "max",
-                  name: "最大值",
+                  name: "Max",
                 },
               ],
             },
             data: data[1],
           },
           {
-            name: "去年",
+            name: "Previous Year",
             type: "line",
             symbol: "none",
             smooth: true,
@@ -212,7 +210,7 @@ export default function Chart2() {
               data: [
                 {
                   type: "max",
-                  name: "最大值",
+                  name: "Max",
                 },
               ],
             },
