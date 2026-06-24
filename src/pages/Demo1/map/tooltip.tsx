@@ -24,6 +24,7 @@ const CityName = styled.div`
 const DataItem = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   margin-bottom: 4px;
 
   &:last-child {
@@ -63,15 +64,19 @@ export default function Tooltip(props: TooltipProps) {
         <TooltipBox>
           <CityName>{data.city}</CityName>
           <DataItem>
-            <span>人口:</span>
-            <span>{data.population}万</span>
+            <span>Population:</span>
+            <span>
+              {(data.population / 100).toLocaleString("en-US", {
+                maximumFractionDigits: 1,
+              })}M
+            </span>
           </DataItem>
           <DataItem>
             <span>GDP:</span>
             <span>{data.gdp}</span>
           </DataItem>
           <DataItem>
-            <span>面积:</span>
+            <span>Area:</span>
             <span>{data.area}</span>
           </DataItem>
         </TooltipBox>
