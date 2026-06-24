@@ -1,10 +1,10 @@
 <div align="center">
-  <h1>数据可视化大屏</h1>
-  <p>基于 Three.js + React 19 + ECharts 的 3D 地图可视化大屏项目</p>
-  <p>包含 3D 地图渲染、轮廓飞线、侧边扫光、多图表联动等丰富功能</p>
+  <h1>3D Data Visualization Dashboard</h1>
+  <p>A 3D map visualization dashboard built with Three.js, React 19, and ECharts.</p>
+  <p>Includes 3D map rendering, animated outline trails, side-sweep lighting, linked charts, and dashboard-style layouts.</p>
 
 <p>
-    <a href="https://github.com/knight-L/sc-datav/pulls">
+    <a href="https://github.com/alqithami/sc-datav/pulls">
       <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
     </a>
     <a href="https://react.dev/">
@@ -16,99 +16,91 @@
     <a href="https://www.typescriptlang.org/">
       <img src="https://img.shields.io/badge/TypeScript-5.9.3-3178c6?style=flat-square&logo=typescript" alt="TypeScript">
     </a>
-    <a href="https://github.com/knight-L/datav/stargazers">
-      <img src="https://img.shields.io/github/stars/knight-L/datav?style=flat-square" alt="GitHub stars">
-    </a>
-    <a href="https://github.com/knight-L/datav/network/members">
-      <img src="https://img.shields.io/github/forks/knight-L/datav?style=flat-square" alt="GitHub forks">
-    </a>
   </p>
 </div>
 
-## 预览
+## Preview
 
-| [预览地址](https://knight-l.github.io/sc-datav/#/demo0) | [预览地址](https://knight-l.github.io/sc-datav/#/demo1) |
+| [Preview](https://knight-l.github.io/sc-datav/#/demo0) | [Preview](https://knight-l.github.io/sc-datav/#/demo1) |
 | ------------------------------------------------------- | ------------------------------------------------------- |
 | ![demo1](./public/demo_0.jpg)                           | ![demo2](./public/demo_1.jpg)                           |
 
-| [预览地址](https://knight-l.github.io/sc-datav/#/demo2) | [预览地址](https://knight-l.github.io/sc-datav/#/demo3) |
+| [Preview](https://knight-l.github.io/sc-datav/#/demo2) | [Preview](https://knight-l.github.io/sc-datav/#/demo3) |
 | ------------------------------------------------------- | ------------------------------------------------------- |
 | ![demo3](./public/demo_2.jpg)                           | ![demo4](./public/demo_3.jpg)                           |
 
-## 地图轮廓贴图下载工具
+## Map Outline Texture Download Tool
 
 [https://github.com/knight-L/sat-hunter](https://github.com/knight-L/sat-hunter)
 
-## 功能特性
+## Features
 
-1. **3D 地图可视化**: 基于 Three.js 的 3D 地图渲染，轮廓飞线动画效果，侧边扫光视觉效果
-2. **省级地图展示**: 四川省地理轮廓精确呈现
-3. **多图表联动**: 柱状图、折线图等多种数据可视化形式
-4. **响应式设计**: 支持多种屏幕尺寸自适应
-5. **实时调试面板**: 使用 Leva 实现参数实时调整
+1. **3D map visualization**: Three.js-based 3D map rendering with animated outline trails and side-sweep lighting effects.
+2. **Provincial map display**: Accurate geographic rendering for Sichuan Province.
+3. **Linked charts**: Multiple chart types, including bar charts, line charts, radar charts, pie charts, and scrolling data tables.
+4. **Responsive design**: Adapts to different screen sizes.
+5. **Real-time tuning panel**: Uses Leva for interactive parameter adjustment.
 
-## 技术栈
+## Technology Stack
 
-本项目是一个基于现代 Web 技术的数据可视化大屏应用，主要技术栈包括：
+This project is a modern web-based data visualization dashboard. The main technologies include:
 
-- **核心框架**: React 19 + TypeScript
-- **构建工具**: Vite (Rolldown 版本)
-- **3D 可视化**: Three.js + @react-three/fiber + @react-three/drei
-- **数据可视化**: ECharts
-- **地理数据处理**: D3-geo
-- **动画库**: GSAP
-- **样式库**: Styled-components
-- **调试工具**: Leva
-- **自适应布局**: autofit.js
+- **Core framework**: React 19 + TypeScript
+- **Build tool**: Vite (Rolldown version)
+- **3D visualization**: Three.js + @react-three/fiber + @react-three/drei
+- **Data visualization**: ECharts
+- **Geospatial processing**: D3-geo
+- **Animation**: GSAP
+- **Styling**: Styled-components
+- **Debug controls**: Leva
+- **Adaptive layout**: autofit.js
 
-## 目录结构
+## Project Structure
 
 ```
 src/
-├── assets/             # 静态资源文件
-│   ├── sc.json         # 四川省地理数据
-│   └── sc_outline.json # 四川省轮廓数据
-├── components/         # 通用组件
-│   ├── chart.tsx       # 图表组件
-│   └── seamVirtualScroll.tsx # 虚拟滚动组件
-├── hooks/              # 自定义Hooks
-├── pages/SCDataV/      # 数据大屏页面
-│   ├── index.tsx       # 页面入口
-│   ├── scMap.tsx       # 地图组件
-│   ├── flyLine.tsx     # 飞线动画组件
-│   ├── chart1.tsx      # 图表1
-│   ├── chart2.tsx      # 图表2
-│   ├── chart3.tsx      # 图表3
-│   └── content.tsx     # 内容布局组件
-└── App.tsx             # 应用根组件
+├── assets/             # Static assets
+│   ├── sc.json         # Sichuan Province geospatial data
+│   └── sc_outline.json # Sichuan Province outline data
+├── components/         # Shared components
+│   ├── chart.tsx       # Chart component
+│   └── seamVirtualScroll.tsx # Seamless virtual scrolling component
+├── hooks/              # Custom hooks
+├── pages/              # Dashboard pages and demos
+│   ├── Index/          # Landing carousel page
+│   ├── Demo0/          # Economic operations dashboard
+│   ├── Demo1/          # Smart city dashboard
+│   ├── Demo2/          # Power grid operations dashboard
+│   └── Demo3/          # 3D turbine model demo
+└── App.tsx             # Application root component
 ```
 
-## 开发指南
+## Development Guide
 
-### 环境要求
+### Requirements
 
 - Node.js >= 18
 - PNPM >= 8
 
-### 安装依赖
+### Install Dependencies
 
 ```bash
 pnpm install
 ```
 
-### 开发运行
+### Run Development Server
 
 ```bash
-# 启动开发服务器
 pnpm dev
 ```
 
-### 构建部署
+### Build and Preview
 
 ```bash
-# 构建生产版本
 pnpm build
-
-# 预览构建结果
 pnpm preview
 ```
+
+## Notes
+
+This fork has been translated to English for documentation and user-facing interface text. The underlying geospatial assets and image assets remain unchanged.
