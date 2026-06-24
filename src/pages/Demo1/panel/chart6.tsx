@@ -17,11 +17,11 @@ type BarOption = ComposeOption<
 const data = [3000, 2000, 4000, 5000, 4500];
 const colors = ["#fbdf88", "#ea580c"];
 const xData = [
-  "50万以下",
-  "50～100万",
-  "100～500万",
-  "500～1000万",
-  "1000万以上",
+  "< ¥0.5M",
+  "¥0.5M-¥1M",
+  "¥1M-¥5M",
+  "¥5M-¥10M",
+  "> ¥10M",
 ];
 export default function Chart6() {
   const chartRef = useRef<EChartsType>(null);
