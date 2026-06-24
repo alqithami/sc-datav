@@ -23,6 +23,7 @@ import FlyLine from "./flyLine";
 import Boundary from "./boundary";
 import Label from "./label";
 import { useConfigStore } from "../stores";
+import { getSichuanCityNameEn } from "@/utils/sichuanCityNames";
 
 import scNormalMap from "@/assets/sc_normal_map1.png";
 import Cones from "./cone";
@@ -73,7 +74,7 @@ export default function Base(props: BaseProps) {
       );
 
       regions.push({
-        name: feature.properties.name,
+        name: getSichuanCityNameEn(feature.properties.name),
         center: new Vector3(x, -y),
         points,
       });
@@ -99,7 +100,7 @@ export default function Base(props: BaseProps) {
       bbox,
       boundary,
     };
-  }, [projection]);
+  }, [projection, data, outlineData]);
 
   useLayoutEffect(() => {
     if (!groupRef.current) return;
@@ -110,7 +111,6 @@ export default function Base(props: BaseProps) {
       y: 7,
       z: 10,
       duration: 2.5,
-      // delay: 2,
       ease: "circ.out",
       onComplete: () => {
         useConfigStore.setState({ mapPlayComplete: true });
@@ -210,17 +210,7 @@ function City(props: {
       onPointerOut={() => {
         vector3.current.setZ(1);
         document.body.style.cursor = "auto";
-      }}
-      //   onClick={(e) => {
-      //     e.stopPropagation();
-      //     gsap.to(e.camera.position, {
-      //       x: e.object.position.x,
-      //       y: e.object.position.y,
-      //       z: e.object.position.z,
-      //       duration: 2,
-      //     });
-      //   }}
-    >
+      }}>
       <ShapeBox bbox={bbox} args={[shape, { depth, bevelEnabled: false }]}>
         <meshStandardMaterial
           transparent
