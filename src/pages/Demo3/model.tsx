@@ -11,7 +11,7 @@ export default function Model() {
 
   const controls = useControls({
     disassembly: {
-      label: "拆解/还原",
+      label: "Explode / Restore",
       value: false,
       transient: false,
       onChange: (v, _, { initial }) => {
@@ -21,7 +21,7 @@ export default function Model() {
         const children = obj.current.children;
         const length = children.length;
 
-        const mid = (length - 1) / 2; // 中心点（兼容奇偶）
+        const mid = (length - 1) / 2;
 
         let step = 0.1;
 
