@@ -14,6 +14,7 @@ import type { CityGeoJSON } from "@/types/map";
 import City, { type CityProps } from "./city";
 import loadTexture from "../helpers/loadTexture";
 import { useConfigStore } from "../stores";
+import { getSichuanCityNameEn } from "@/utils/sichuanCityNames";
 
 import map from "@/assets/sc_map.png";
 import normalMap from "@/assets/sc_normal_map.png";
@@ -73,7 +74,7 @@ export default function Base(props: BaseProps) {
       )!;
 
       regions.push({
-        city: feature.properties.name,
+        city: getSichuanCityNameEn(feature.properties.name),
         cityId: [x, -y, depth + 0.1],
         points,
       });
