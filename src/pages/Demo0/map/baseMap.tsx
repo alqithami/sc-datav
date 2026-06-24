@@ -12,6 +12,7 @@ import { useMapStyleStore } from "../stores";
 import ShapeBox from "./shape";
 import type { GeoProjection } from "d3-geo";
 import type { CityGeoJSON } from "@/types/map";
+import { getSichuanCityNameEn } from "@/utils/sichuanCityNames";
 
 import scMapData from "@/assets/sc.json";
 import textureMap from "@/assets/sc_map.png";
@@ -59,7 +60,7 @@ export default function BaseMap({ projection }: { projection: GeoProjection }) {
       );
 
       regions.push({
-        name: feature.properties.name,
+        name: getSichuanCityNameEn(feature.properties.name),
         center: new Vector3(x, -y),
         points,
       });
