@@ -35,7 +35,7 @@ const StatisticsNumber = styled(NumberAnimation)`
   color: #ea580c;
 
   &::after {
-    content: "亿万元";
+    content: "¥100M";
     display: inline-block;
     font-size: 12px;
     color: rgba(0, 0, 0, 0.7);
@@ -106,7 +106,7 @@ export default function Charts4() {
             type: "value",
           },
           series: {
-            name: "series1",
+            name: "Revenue",
             type: "line",
             symbol: "none",
             itemStyle: {
@@ -131,7 +131,7 @@ export default function Charts4() {
         }}
       />
       <Statistics>
-        <StatisticsTitle>收益总计</StatisticsTitle>
+        <StatisticsTitle>Total Revenue</StatisticsTitle>
         <StatisticsNumber
           value={99608}
           options={{ minimumFractionDigits: 2, maximumFractionDigits: 2 }}
@@ -140,7 +140,7 @@ export default function Charts4() {
       {Array.from({ length: 4 }, (_, k) => (
         <Statistics1 key={k}>
           <CompanyIcon />
-          企业数量
+          Enterprise Count
           <Statistics1Number
             value={7792}
             options={{ maximumFractionDigits: 0 }}
