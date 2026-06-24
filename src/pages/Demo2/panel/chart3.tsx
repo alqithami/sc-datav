@@ -16,7 +16,7 @@ type BarOption = ComposeOption<
 
 const data = [3000, 2000, 4000, 5000, 4500];
 const colors = ["#3061DB", "#BDCFFF"];
-const xData = ["50", "50～100", "100～500", "500～1000", "1000"];
+const xData = ["<50", "50-100", "100-500", "500-1000", ">1000"];
 export default function Chart3() {
   const chartRef = useRef<EChartsType>(null);
   const tipIndex = useRef(0);
@@ -101,7 +101,7 @@ export default function Chart3() {
         },
         series: [
           {
-            name: "",
+            name: "Generation",
             type: "bar",
             barWidth: 30,
             label: {
