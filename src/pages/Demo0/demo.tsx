@@ -28,12 +28,12 @@ const LevaBox = styled.div`
 
 export default function Demo() {
   const controls = useControls({
-    网格: folder({
-      infiniteGrid: { label: "显示网格", value: true },
-      cellColor: { label: "单元格颜色", value: "#6f6f6f" },
-      sectionColor: { label: "分区颜色", value: "#7fe5a8" },
+    Grid: folder({
+      infiniteGrid: { label: "Show grid", value: true },
+      cellColor: { label: "Cell color", value: "#6f6f6f" },
+      sectionColor: { label: "Section color", value: "#7fe5a8" },
     }),
-    GBackground: { label: "背景颜色", value: "#26282a" },
+    GBackground: { label: "Background color", value: "#26282a" },
   });
 
   return (
