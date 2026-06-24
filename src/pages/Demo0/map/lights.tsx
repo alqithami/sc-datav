@@ -3,7 +3,7 @@ import { useControls } from "leva";
 export const AmbientLight = () => {
   const controls = useControls({
     intensity: {
-      label: "环境光",
+      label: "Ambient light",
       value: 2,
       min: 0,
       max: 10,
@@ -15,7 +15,7 @@ export const AmbientLight = () => {
 export const PointLight = () => {
   const controls = useControls({
     intensity1: {
-      label: "点光源",
+      label: "Point light",
       value: 1000,
       min: 0,
       max: 2000,
