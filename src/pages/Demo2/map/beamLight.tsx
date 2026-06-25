@@ -31,20 +31,20 @@ const SparklesImplMaterial = extend(
         varying vec2 vUv;
 
         void main() {
-            // 1. 水平发光核心 (中间亮，两侧虚)
+            // Horizontal glow core: bright in the center and soft at both sides.
             float strength = 1.0 - abs(vUv.x - 0.5) * 2.0;
             strength = pow(strength, 2.0);
 
-            // 2. 垂直渐变 (关键修改：两端透明，模拟一段独立的光)
-            // 使用抛物线或正弦波让中间最亮，两头淡出
+            // Vertical fade: transparent at both ends to simulate an isolated light beam.
+            // A sine curve keeps the center bright and both ends soft.
             float verticalFade = sin(vUv.y * 3.14159); 
-            // 让两端更锐利一点
+            // Sharpen both ends slightly.
             verticalFade = pow(verticalFade, 0.5);
 
             float brightness = strength * verticalFade * (0.6 + 0.4);
 
-            // 4. 最终颜色
-            vec3 finalColor = uColor * brightness * 2.0; // 增强一点亮度
+            // Final color.
+            vec3 finalColor = uColor * brightness * 2.0;
             
             gl_FragColor = vec4(finalColor, brightness * uOpacity);
         }
@@ -76,29 +76,25 @@ const BeamLight = ({}: SparklesProps) => {
 
   useFrame((_, delta) => {
     ref.current.children.forEach((beam) => {
-      // 向上移动
+      // Move upward.
       beam.position.y += beam.userData.speed * delta;
 
-      // 边界检查：如果飞得太高，就重置到底部
+      // Boundary check: reset to the bottom after the beam rises too high.
       if (beam.position.y > beam.userData.resetHeight) {
-        // 随机水平位置
+        // Random horizontal position.
         beam.position.x = (Math.random() - 0.5) * range;
         beam.position.z = (Math.random() - 0.5) * range;
 
-        // 从地底开始生成，避免直接突然出现在视野中
+        // Start below the ground to avoid suddenly appearing in view.
         beam.position.y = 1 - Math.random() * 5;
 
-        // 随机长度 (流光段的长度)
+        // Random beam segment length.
         beam.scale.y = 2.0 + Math.random() * 1.0;
       }
     });
   });
 
-  //   useImperativeHandle(forwardRef, () => ref.current, []);
-
   const range = 20;
-
-  //   console.log(ref);
 
   return (
     <group ref={ref}>
@@ -112,8 +108,8 @@ const BeamLight = ({}: SparklesProps) => {
           ]}
           scale={[1, 2.0 + Math.random() * 4.0, 1]}
           userData={{
-            speed: 2 + Math.random(), // 上升速度
-            resetHeight: 10 + Math.random() * 20, // 飞多高后消失
+            speed: 2 + Math.random(),
+            resetHeight: 10 + Math.random() * 20,
           }}>
           <cylinderGeometry args={[0.03, 0.03, 1, 6, 1, true]} />
           <SparklesImplMaterial
