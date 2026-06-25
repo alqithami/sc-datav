@@ -1,8 +1,9 @@
 {
-  "name": "sc-datav",
+  "name": "geospatial-datav-english-baseline",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "description": "English baseline for a Three.js geospatial data visualization dashboard, prepared for future CH-MARL maritime logistics adaptation.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
