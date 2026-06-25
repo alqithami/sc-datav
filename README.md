@@ -1,7 +1,7 @@
 <div align="center">
-  <h1>3D Data Visualization Dashboard</h1>
-  <p>A 3D map visualization dashboard built with Three.js, React 19, and ECharts.</p>
-  <p>Includes 3D map rendering, animated outline trails, side-sweep lighting, linked charts, and dashboard-style layouts.</p>
+  <h1>3D Geospatial Data Visualization Dashboard</h1>
+  <p>An English baseline for a 3D geospatial dashboard built with Three.js, React 19, TypeScript, and ECharts.</p>
+  <p>Prepared as a clean visualization foundation for future CH-MARL maritime logistics adaptation.</p>
 
 <p>
     <a href="https://github.com/alqithami/sc-datav/pulls">
@@ -19,63 +19,69 @@
   </p>
 </div>
 
-## Preview
+## Status
 
-| [Preview](https://knight-l.github.io/sc-datav/#/demo0) | [Preview](https://knight-l.github.io/sc-datav/#/demo1) |
-| ------------------------------------------------------- | ------------------------------------------------------- |
-| ![demo1](./public/demo_0.jpg)                           | ![demo2](./public/demo_1.jpg)                           |
+This fork is now maintained as an English baseline. The visible dashboard text, documentation, UI labels, chart labels, table headers, control labels, and source comments have been translated to English where they are part of the application interface or developer-facing code.
 
-| [Preview](https://knight-l.github.io/sc-datav/#/demo2) | [Preview](https://knight-l.github.io/sc-datav/#/demo3) |
-| ------------------------------------------------------- | ------------------------------------------------------- |
-| ![demo3](./public/demo_2.jpg)                           | ![demo4](./public/demo_3.jpg)                           |
+The remaining Chinese strings, if any, should be treated as source geospatial metadata inside static GeoJSON assets or embedded binary/image content. Rendered Sichuan city labels are converted to English at runtime through `src/utils/sichuanCityNames.ts`.
 
-## Map Outline Texture Download Tool
+## Dashboard Routes
 
-[https://github.com/knight-L/sat-hunter](https://github.com/knight-L/sat-hunter)
+After starting the development server, open these routes locally:
+
+| Route | Dashboard |
+| --- | --- |
+| `/#/` | Landing carousel |
+| `/#/demo0` | Economic operations dashboard |
+| `/#/demo1` | Smart city dashboard |
+| `/#/demo2` | Power grid operations dashboard |
+| `/#/demo3` | 3D turbine model demo |
 
 ## Features
 
-1. **3D map visualization**: Three.js-based 3D map rendering with animated outline trails and side-sweep lighting effects.
-2. **Provincial map display**: Accurate geographic rendering for Sichuan Province.
-3. **Linked charts**: Multiple chart types, including bar charts, line charts, radar charts, pie charts, and scrolling data tables.
-4. **Responsive design**: Adapts to different screen sizes.
-5. **Real-time tuning panel**: Uses Leva for interactive parameter adjustment.
+1. **3D geospatial visualization**: Three.js-based 3D map rendering with animated outline trails and side-sweep lighting effects.
+2. **Regional map display**: Accurate rendering of Sichuan Province using GeoJSON assets.
+3. **Linked charts**: Bar charts, line charts, radar charts, pie charts, heatmaps, and scrolling data tables.
+4. **Responsive dashboard layout**: Full-screen adaptive layouts for data-wall and command-center style displays.
+5. **Interactive controls**: Leva-based tuning panels and in-dashboard layer controls.
+6. **Reusable baseline**: A clean English starting point that can be copied into a new CH-MARL maritime logistics repository.
 
 ## Technology Stack
 
-This project is a modern web-based data visualization dashboard. The main technologies include:
-
 - **Core framework**: React 19 + TypeScript
-- **Build tool**: Vite (Rolldown version)
+- **Build tool**: Vite
 - **3D visualization**: Three.js + @react-three/fiber + @react-three/drei
 - **Data visualization**: ECharts
 - **Geospatial processing**: D3-geo
 - **Animation**: GSAP
 - **Styling**: Styled-components
 - **Debug controls**: Leva
+- **State management**: Zustand
 - **Adaptive layout**: autofit.js
 
 ## Project Structure
 
-```
+```text
 src/
-├── assets/             # Static assets
-│   ├── sc.json         # Sichuan Province geospatial data
-│   └── sc_outline.json # Sichuan Province outline data
-├── components/         # Shared components
-│   ├── chart.tsx       # Chart component
-│   └── seamVirtualScroll.tsx # Seamless virtual scrolling component
-├── hooks/              # Custom hooks
-├── pages/              # Dashboard pages and demos
-│   ├── Index/          # Landing carousel page
-│   ├── Demo0/          # Economic operations dashboard
-│   ├── Demo1/          # Smart city dashboard
-│   ├── Demo2/          # Power grid operations dashboard
-│   └── Demo3/          # 3D turbine model demo
-└── App.tsx             # Application root component
+├── assets/                  # Static assets, geospatial data, textures, and model files
+│   ├── sc.json              # Sichuan Province geospatial data
+│   └── sc_outline.json      # Sichuan Province outline data
+├── components/              # Shared UI and visualization components
+│   ├── chart.tsx            # ECharts wrapper component
+│   └── seamVirtualScroll.tsx # Seamless virtual scrolling table component
+├── hooks/                   # Custom animation, sizing, and timing hooks
+├── pages/                   # Dashboard pages and demos
+│   ├── Index/               # Landing carousel page
+│   ├── Demo0/               # Economic operations dashboard
+│   ├── Demo1/               # Smart city dashboard
+│   ├── Demo2/               # Power grid operations dashboard
+│   └── Demo3/               # 3D turbine model demo
+├── types/                   # Shared TypeScript types
+├── utils/                   # Utility helpers, including English city-name mapping
+└── App.tsx                  # Application root component
 ```
 
-## Development Guide
+## Development
 
 ### Requirements
 
@@ -101,6 +107,48 @@ pnpm build
 pnpm preview
 ```
 
-## Notes
+## Deployment Base Path
 
-This fork has been translated to English for documentation and user-facing interface text. The underlying geospatial assets and image assets remain unchanged.
+The Vite base path is configurable. This makes the project easier to copy into a new repository without hard-coding the old fork name.
+
+```bash
+# For a root-domain deployment
+pnpm build
+
+# For a GitHub Pages repository deployment, replace the path with the new repo name
+VITE_BASE_PATH=/chmarl-datav/ pnpm build
+```
+
+## Copying to a New Repository
+
+GitHub may not allow you to fork a fork into the same account. Use this project as a downloadable/copyable baseline instead:
+
+```bash
+git clone https://github.com/alqithami/sc-datav.git chmarl-datav
+cd chmarl-datav
+rm -rf .git
+git init
+git add .
+git commit -m "Initial CH-MARL dashboard baseline"
+git branch -M main
+git remote add origin https://github.com/<your-account>/<new-repository>.git
+git push -u origin main
+```
+
+After the new repository is created, update its GitHub About description to something like:
+
+> CH-MARL maritime logistics dashboard based on a Three.js geospatial data visualization baseline.
+
+## Future CH-MARL Adaptation
+
+For CH-MARL, the likely next refactor is to replace the Sichuan-specific assets and sample dashboards with maritime logistics layers:
+
+- Vessel trajectories and AIS-derived movement layers.
+- Port, berth, anchorage, and maritime corridor geospatial layers.
+- MARL agent state, action, reward, constraint, and fairness panels.
+- Congestion, emissions, ETA, and risk heatmaps.
+- Live event tables for port calls, arrivals, departures, route changes, and constraint violations.
+
+## License
+
+This project inherits the upstream license. See `LICENSE`.
