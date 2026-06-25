@@ -49,7 +49,7 @@ export default function Bottom() {
       value: new Color(0xea580c),
     },
     uDir: {
-      value: 2.0, // 1.0-xy,2.0-xz
+      value: 2.0, // 1.0 = xy, 2.0 = xz
     },
   });
   const meshRef1 = useRef<Mesh>(null!);
@@ -166,16 +166,16 @@ export default function Bottom() {
                 #endif
                 
                 float r = uTime * uSpeed;
-                //光环宽度
+                // Halo width.
                 float w = 0.0; 
                 if(w>uWidth){
                     w = uWidth;
                 }else{
                     w = uTime * 5.0;
                 }
-                //几何中心点
+                // Geometry center point.
                 vec2 center = vec2(0.0, 0.0); 
-                // 距离圆心的距离
+                // Distance to circle center.
                 float rDistance = distance(vPosition.xz, center);
                 if(uDir==2.0){
                     rDistance = distance(vPosition.xy, center);
@@ -185,13 +185,13 @@ export default function Bottom() {
                 if(rDistance < r + w) {
                     per = (rDistance - r) / w;
                     outgoingLight = mix(outgoingLight, uColor, per);
-                    // 获取0->透明度的插值
+                    // Interpolate from 0 to opacity.
                     float alphaV = mix(0.0,diffuseColor.a,per);
                     gl_FragColor = vec4(outgoingLight,  alphaV);
                 } else {
                     per = (rDistance - r - w) / w;
                     outgoingLight = mix(uColor, outgoingLight, per);
-                    // 获取0->透明度的插值
+                    // Interpolate from opacity to 0.
                     float alphaV = mix(diffuseColor.a,0.0,per);
                     gl_FragColor = vec4(outgoingLight,  alphaV);
                 }
